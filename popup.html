@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaji Calculator</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; padding: 10px; }
+    label, input, button { display: block; margin: 10px 0; padding: 4px; }
+    .btn {background-color: orange; color: white; border: orange; border-radius: 4px; padding: 4px; height: 30px; width: 50px;}
+    #result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div id="popup-content">
+    <h4>Sudah cukup belum ?</h4>
+
+    <label for="gaji">Your Allowance (IDR):</label>
+    <input type="number" id="gaji" placeholder="ex: 500000">
+
+    <label for="percent-slider">How many % from your allowance:</label>
+    <input type="range" id="percent-slider" min="1" max="100" value="20">
+    <span id="percent-value">20</span>%
+    
+    <button class="btn btn-calculate" id="calculate">Hitung</button>
+
+    <hr>
+    
+    <div id="result"></div>
+  </div>
+  <script src="./scripts/popup.js"></script>
+</body>
+</html>
