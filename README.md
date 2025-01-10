@@ -1,4 +1,3 @@
-
 # Sudah Cukup Belum ?
 
 Menghitung waktu kerja dari gaji bulanan untuk membeli wishlist yang ada dihalaman e-commerce favorite kamu.
