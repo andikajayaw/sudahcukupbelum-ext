@@ -1,14 +1,3 @@
-// Get references to the slider and its value display
-// const percentSlider = document.getElementById('percent-slider');
-// const percentValue = document.getElementById('percent-value');
-
-// // Update the displayed number of percent when the slider value changes
-// percentSlider.addEventListener('input', () => {
-//   percentValue.textContent = percentSlider.value;
-// });
-
-
-
 document.getElementById("calculate").addEventListener("click", () => {
     const gaji = parseFloat(document.getElementById("gaji").value);
     const percent = 0; // Get the selected number percent from the slider
@@ -24,19 +13,15 @@ document.getElementById("calculate").addEventListener("click", () => {
           {
             target: { tabId: tabs[0].id },
             func: (gaji, percent) => {
-              const priceElement = document.querySelector(".price");
-              if (priceElement) {
-                const priceText = priceElement.textContent.replace(/[^\d]/g, "");
-                // return parseFloat(priceText);
-              }
-              function convertPricesOnPage() {
+              // const priceElement = document.querySelector(".price");
+              // if (priceElement) {
+              //   const priceText = priceElement.textContent.replace(/[^\d]/g, "");
+              //   // return parseFloat(priceText);
+              // }
+              function getPricesOnPage() {
                 const priceRegex = /Rp\s*(\d{1,3}(?:\.\d{3})*(?:,\d{2})?)/g;
-    
-                /**
-                 * Processes a single text node to find prices and convert them.
-                 * @param {Node} node - The text node to process.
-                 */
-                function processTextNode(node) {
+
+                function getTextNode(node) {
                   const text = node.nodeValue;
                   const matches = text.match(priceRegex);
     
@@ -53,10 +38,9 @@ document.getElementById("calculate").addEventListener("click", () => {
                       // const dailySavings = price / days;
                       dailyGaji = Math.round(gaji / 21);
                       dayOfWork = Math.floor(price / dailyGaji);
-                      let savings = dailyGaji * (percent / 100);
-                      dayOfSaving = Math.floor(Number(price) / savings);
-                      dailySavings = dayOfSaving;
-                      // dailySavings = convertToDailySavings(price, days);
+                      // let savings = dailyGaji * (percent / 100);
+                      // dayOfSaving = Math.floor(Number(price) / savings);
+                      // dailySavings = dayOfSaving;
                       const replacementText = `${match} \n= ${dailyGaji.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })} * ${dayOfWork} hari kerja`;
                       newText = newText.replace(match, replacementText);
 
@@ -74,14 +58,10 @@ document.getElementById("calculate").addEventListener("click", () => {
                   }
                 }
     
-                /**
-                 * Recursively traverses the DOM tree and processes text nodes to convert prices.
-                 * @param {Node} node - The current node in the DOM tree.
-                 */
                 function walkDOM(node) {
                   if (node.nodeType === 3) {
                     // Text node
-                    processTextNode(node);
+                    getTextNode(node);
                   } else if (node.nodeType === 1 && node.tagName.toLowerCase() !== 'script') {
                     // Element node, exclude <script> tags
                     Array.from(node.childNodes).forEach(walkDOM);
@@ -91,7 +71,7 @@ document.getElementById("calculate").addEventListener("click", () => {
                 walkDOM(document.body);
               }
     
-              convertPricesOnPage();
+              getPricesOnPage();
               // return null;
             },
             args: [gaji, percent]

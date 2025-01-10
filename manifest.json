@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "sudah cukup belum?",
+    "name": "Sudah Cukup Belum?",
     "version": "1.0",
-    "description": "Menghitung waktu kerja untuk membeli barang dari halaman e-commerce.",
+    "description": "Menghitung waktu kerja dari gaji bulanan untuk membeli wishlist yang ada dihalaman e-commerce favorite kamu.",
     "permissions": ["scripting", "activeTab"],
     "host_permissions": ["<all_urls>"],
     "background": {

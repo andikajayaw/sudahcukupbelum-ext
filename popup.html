@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sudah Cukup Belum</title>
+  <title>Sudah Cukup Belum?</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="popup-content">
-    <h2>Hitung Wishlistmu</h2>
+    <h3>Sudah cukup belum ?</h3>
     <div style="display: grid; gap: 8px; margin-top: 8px;">
       <label for="gaji" style="font-weight: bold; font-size: 12px;">Gaji Bulanan (IDR):</label>
-      <input type="number" id="gaji" placeholder="cth: 3000000">
+      <input type="currency" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" id="gaji" placeholder="cth: 3000000">
+      <span style="font-size: 9px;">*5 hari kerja / minggu (20-22 hari/bulan)</span>
     </div>
     
     <button class="btn btn-calculate" id="calculate">Hitung</button>
