@@ -4,8 +4,8 @@ Menghitung waktu kerja dari gaji bulanan untuk membeli wishlist yang ada dihalam
 
 Memuat Extension
 ---
-
-1. Buka ```chrome://extensions``` di browser Chrome.
-2. Aktifkan Developer Mode.
-3. Klik Load unpacked dan pilih folder yang sudah diclone.
-4. Ikon extension Anda akan muncul di toolbar browser.
+1. Clone repo ini
+2. Buka ```chrome://extensions``` di browser Chrome.
+3. Aktifkan Developer Mode.
+4. Klik Load unpacked dan pilih folder yang sudah diclone.
+5. Ikon extension Anda akan muncul di toolbar browser.
