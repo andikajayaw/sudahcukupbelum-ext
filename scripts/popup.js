@@ -11,7 +11,6 @@
 
 document.getElementById("calculate").addEventListener("click", () => {
     const gaji = parseFloat(document.getElementById("gaji").value);
-    console.log(gaji)
     const percent = 0; // Get the selected number percent from the slider
   
     if (isNaN(gaji) || gaji <= 0) {
@@ -25,11 +24,11 @@ document.getElementById("calculate").addEventListener("click", () => {
           {
             target: { tabId: tabs[0].id },
             func: (gaji, percent) => {
-              // const priceElement = document.querySelector(".price");
-              // if (priceElement) {
-              //   const priceText = priceElement.textContent.replace(/[^\d]/g, "");
-              //   return parseFloat(priceText);
-              // }
+              const priceElement = document.querySelector(".price");
+              if (priceElement) {
+                const priceText = priceElement.textContent.replace(/[^\d]/g, "");
+                // return parseFloat(priceText);
+              }
               function convertPricesOnPage() {
                 const priceRegex = /Rp\s*(\d{1,3}(?:\.\d{3})*(?:,\d{2})?)/g;
     
@@ -42,7 +41,7 @@ document.getElementById("calculate").addEventListener("click", () => {
                   const matches = text.match(priceRegex);
     
                   if (matches) {
-                    console.log(matches)
+                    console.log(matches, priceElement)
                     let newText = text;
                     let dailySavings = null;
                     // const gaji = parseFloat(document.getElementById("gaji").value);
@@ -58,12 +57,13 @@ document.getElementById("calculate").addEventListener("click", () => {
                       dayOfSaving = Math.floor(Number(price) / savings);
                       dailySavings = dayOfSaving;
                       // dailySavings = convertToDailySavings(price, days);
-                      const replacementText = `${match} = ${dailyGaji.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })} * ${dayOfWork} hari kerja`;
+                      const replacementText = `${match} \n= ${dailyGaji.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })} * ${dayOfWork} hari kerja`;
                       newText = newText.replace(match, replacementText);
 
                     });
-    
+                    
                     const newSpan = document.createElement('span');
+                    newSpan.classList.add('andikajayaw');
                     newSpan.innerHTML = newText;
                     newSpan.style.color = 'green';
                     newSpan.style.cursor = 'pointer';
@@ -192,6 +192,8 @@ document.getElementById("calculate").addEventListener("click", () => {
           //   }
           // }
         );
+      } else {
+        alert("Tidak ada harga barang yang bisa dihitung.");
       }
     });
   });
